@@ -4,9 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preversion": "git update-index --no-assume-unchanged package-lock.json",
+    "postversion": "git update-index --assume-unchanged package-lock.json && git push --tags && git push",
+    "postinstall": "git update-index --assume-unchanged package-lock.json"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "dotenv": "^7.0.0",
+    "form-data": "^2.3.3",
+    "got": "^9.6.0",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
+    "moment": "^2.24.0",
+    "ttag-cli": "^1.7.8"
+  }
 }
