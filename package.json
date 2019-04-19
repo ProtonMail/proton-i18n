@@ -11,8 +11,7 @@
     "pretty": "prettier --write  $(find lib/ index.js -type f -name '*.js')",
     "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "git update-index --no-assume-unchanged package-lock.json",
-    "postversion": "git update-index --assume-unchanged package-lock.json && git push --tags && git push",
-    "postinstall": "git update-index --assume-unchanged package-lock.json"
+    "postversion": "git update-index --assume-unchanged package-lock.json && git push --tags && git push"
   },
   "keywords": [],
   "engines": {
