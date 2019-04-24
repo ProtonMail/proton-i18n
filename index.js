@@ -23,9 +23,9 @@ async function main() {
         require('./lib/validate')();
     }
 
-    // if (is('compile')) {
-    //     require('./lib/validate')();
-    // }
+    if (is('compile')) {
+        require('./lib/compile')();
+    }
 
     if (is('list')) {
         require('./lib/cache').write();
