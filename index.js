@@ -7,7 +7,7 @@ require('dotenv').config({ path: 'env/.env' });
 
 const { error } = require('./lib/helpers/log')('proton-i18n');
 
-const is = (command) => argv._.includes(command) && argv._.length === 1;
+const is = (command) => argv._.includes(command);
 const isEmpty = () => !argv._.length;
 
 async function main() {
@@ -20,7 +20,7 @@ async function main() {
     }
 
     if (is('validate')) {
-        require('./lib/validate')();
+        require('./lib/validate')(argv._[1], { path: argv._[2] });
     }
 
     if (is('compile')) {
