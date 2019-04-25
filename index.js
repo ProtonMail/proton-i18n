@@ -8,7 +8,6 @@ require('dotenv').config({ path: 'env/.env' });
 const { error } = require('./lib/helpers/log')('proton-i18n');
 
 const is = (command) => argv._.includes(command);
-const isEmpty = () => !argv._.length;
 
 async function main() {
     if (is('crowdin')) {
@@ -31,14 +30,18 @@ async function main() {
         require('./lib/cache').write();
     }
 
-    if (is('help') || isEmpty()) {
+    if (is('help')) {
         console.log(dedent`
         Usage: $ proton-i18n <command>
         Available commands:
           - ${chalk.blue('crowdin')}
               To update, download etc. translations (--help to get more details)
-          - ${chalk.blue('validate')}
+
+          - ${chalk.blue('validate')} ${chalk.blue('<type>')}
               To validate the translations, check if we have contexts
+                - type: default (default) validate we don't have missing context
+                - type: lint-functions check if we use the right format for ttag
+
           - ${chalk.blue('extract')}
               Extract all translations from the projet
     `);
