@@ -60,6 +60,11 @@ async function main() {
 
           - ${chalk.blue('compile')}
               Compile all translations from the dir ./po to a JSON inside src/i18n/<lang>.json
+
+          - ${chalk.blue('commit')} ${chalk.blue('<type>')}
+              Commit translations
+              - type: update commit new extracted translations
+              - type: upgrade commit new translations (po, json)
     `);
     }
 }
