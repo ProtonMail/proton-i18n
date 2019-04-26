@@ -3,13 +3,17 @@
 const dedent = require('dedent');
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
-require('dotenv').config({ path: 'env/.env' });
+const CONFIG = require('./config');
 
-const { error } = require('./lib/helpers/log')('proton-i18n');
+require('dotenv').config({ path: CONFIG.ENV_FILE });
+
+const { error, debug } = require('./lib/helpers/log')('proton-i18n');
 
 const is = (command) => argv._.includes(command);
 
 async function main() {
+    debug(CONFIG.getEnv());
+
     if (is('crowdin')) {
         await require('./lib/crowdin')();
     }
@@ -27,7 +31,7 @@ async function main() {
     }
 
     if (is('list')) {
-        require('./lib/cache').write();
+        require('./lib/cache').write(argv._[1]);
     }
 
     if (is('help')) {
@@ -44,6 +48,14 @@ async function main() {
 
           - ${chalk.blue('extract')}
               Extract all translations from the projet
+
+          - ${chalk.blue('list')} ${chalk.blue('<type>')}
+              List all translations available
+                - type: default (default) write them inside a file po/lang.json
+                - type: show print JSON inside the console
+
+          - ${chalk.blue('compile')}
+              Compile all translations from the dir ./po to a JSON inside src/i18n/<lang>.json
     `);
     }
 }
