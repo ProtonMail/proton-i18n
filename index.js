@@ -38,7 +38,7 @@ async function main() {
         require('./lib/cache').write(argv._[1]);
     }
 
-    if (is('help')) {
+    if (is('help') && !is('crowdin')) {
         console.log(dedent`
         Usage: $ proton-i18n <command>
         Available commands:
