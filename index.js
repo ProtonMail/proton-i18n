@@ -3,11 +3,11 @@
 const dedent = require('dedent');
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
+
 const CONFIG = require('./config');
+const { error, debug } = require('./lib/helpers/log')('proton-i18n');
 
 require('dotenv').config({ path: CONFIG.ENV_FILE });
-
-const { error, debug } = require('./lib/helpers/log')('proton-i18n');
 
 const is = (command) => argv._.includes(command);
 
@@ -16,6 +16,10 @@ async function main() {
 
     if (is('crowdin')) {
         await require('./lib/crowdin')();
+    }
+
+    if (is('commit')) {
+        await require('./lib/commit')(argv._[1]);
     }
 
     if (is('extract')) {

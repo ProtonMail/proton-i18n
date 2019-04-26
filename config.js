@@ -1,28 +1,25 @@
 const path = require('path');
 const { error } = require('./lib/helpers/log')('proton-i18n');
 
-const CONFIG = {
-    ENV_FILE: 'env/.env',
-    OUTPUT_JSON_LANG: 'src/i18n/',
-    OUTPUT_I18N_DIR: path.join(process.cwd(), 'po'),
-    CACHE_LANG: 'po/lang.json',
-    OUTPUT_PO: 'po/template.pot',
-    PROTON_DEPENDENCIES: ['src/app'].concat(
-        ['react-components/{co*,helpers}', 'proton-shared/lib'].map((name) => `node_modules/${name}`)
-    )
-};
+const ENV_FILE = 'env/.env';
+const PROTON_DEPENDENCIES = ['src/app'].concat(
+    ['react-components/{co*,helpers}', 'proton-shared/lib'].map((name) => `node_modules/${name}`)
+);
 
-const getTemplate = (fullPath) => {
-    const file = process.env.OUTPUT_PO || CONFIG.OUTPUT_PO;
-    return !fullPath ? file : path.join(CONFIG.OUTPUT_I18N_DIR, file);
-};
-const getNameCrowdinFile = () => process.env.CROWDIN_FILE_NAME;
-const getProjectName = () => process.env.CROWDIN_PROJECT_NAME;
-const checkEnvKey = () => {
-    if (!process.env.CROWDIN_KEY_API || !process.env.CROWDIN_FILE_NAME || !process.env.CROWDIN_PROJECT_NAME) {
-        const keys = ['CROWDIN_KEY_API', 'CROWDIN_FILE_NAME', 'CROWDIN_PROJECT_NAME'].join(' - ');
-        error(new Error(`Missing one/many mandatory keys from the .env ( cf the Wiki): \n${keys}`));
-    }
+const getFiles = () => {
+    const TEMPLATE_NAME = 'template.pot';
+    const I18N_EXTRACT_DIR = process.env.I18N_EXTRACT_DIR || 'po';
+    const I18N_JSON_DIR = process.env.I18N_EXTRACT_DIR || 'src/i18n';
+
+    return {
+        TEMPLATE_NAME,
+        I18N_EXTRACT_DIR,
+        I18N_JSON_DIR,
+        CACHE_FILE: path.join(I18N_EXTRACT_DIR, 'lang.json'),
+        I18N_OUTPUT_DIR: path.join(process.cwd(), I18N_EXTRACT_DIR),
+        TEMPLATE_FILE: path.join(I18N_EXTRACT_DIR, TEMPLATE_NAME),
+        TEMPLATE_FILE_FULL: path.join(process.cwd(), I18N_EXTRACT_DIR, TEMPLATE_NAME)
+    };
 };
 
 const getEnv = () => ({
@@ -32,10 +29,23 @@ const getEnv = () => ({
     APP_KEY: process.env.APP_KEY
 });
 
-CONFIG.getTemplate = getTemplate;
-CONFIG.getProjectName = getProjectName;
-CONFIG.getNameCrowdinFile = getNameCrowdinFile;
-CONFIG.checkEnvKey = checkEnvKey;
-CONFIG.getEnv = getEnv;
+const getCrowdin = () => {
+    if (!process.env.CROWDIN_KEY_API || !process.env.CROWDIN_FILE_NAME || !process.env.CROWDIN_PROJECT_NAME) {
+        const keys = ['CROWDIN_KEY_API', 'CROWDIN_FILE_NAME', 'CROWDIN_PROJECT_NAME'].join(' - ');
+        error(new Error(`Missing one/many mandatory keys from the .env ( cf the Wiki): \n${keys}`));
+    }
 
-module.exports = CONFIG;
+    return {
+        KEY_API: process.env.CROWDIN_KEY_API,
+        FILE_NAME: process.env.CROWDIN_FILE_NAME,
+        PROJECT_NAME: process.env.CROWDIN_PROJECT_NAME
+    };
+};
+
+module.exports = {
+    getEnv,
+    getCrowdin,
+    getFiles,
+    ENV_FILE,
+    PROTON_DEPENDENCIES
+};
