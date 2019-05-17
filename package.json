@@ -22,6 +22,7 @@
   "dependencies": {
     "angular-gettext-cli": "github:huston007/angular-gettext-cli#a59bc3e142a5bee1b21d1876d1bb88008bd115b7",
     "chalk": "^2.4.2",
+    "csv-parse": "^4.4.1",
     "dedent": "^0.7.0",
     "dotenv": "^7.0.0",
     "execa": "^1.0.0",
