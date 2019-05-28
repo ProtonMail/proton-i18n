@@ -64,6 +64,10 @@ async function main() {
             {
                 title: 'Export translations as JSON',
                 task: () => require('./lib/compile')()
+            },
+            {
+                title: 'Commit translations',
+                task: () => require('./lib/commit')('upgrade')
             }
         ]);
     }
