@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const dedent = require('dedent');
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
 
 const CONFIG = require('./config');
 const { error, debug } = require('./lib/helpers/log')('proton-i18n');
+const renderHelp = require('./lib/helpers/help');
 
 require('dotenv').config({ path: CONFIG.ENV_FILE });
 
@@ -78,11 +76,7 @@ async function main() {
     }
 
     if (is('help') && !is('crowdin')) {
-        const file = fs.readFileSync(path.join(__dirname, 'help'), 'utf8');
-        const content = file.replace(/\[(\w+)\](<\w+>|\w+)\[\/\w+\]/g, (match, g1, g2) => {
-            return chalk[g1](g2);
-        });
-        console.log(content);
+        renderHelp();
     }
 }
 
