@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint lib index.js config.js --ext .js --quiet --cache",
     "pretty": "prettier --write  $(find lib/ index.js -type f -name '*.js')",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "del test/compile/* && cross-env TEST_ENV=test/.env npx jest",
     "preversion": "git update-index --no-assume-unchanged package-lock.json",
     "postversion": "git update-index --assume-unchanged package-lock.json && git push --tags && git push"
   },
@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.0",
+    "del-cli": "^3.0.0",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-react-app": "^5.0.2",
@@ -46,6 +48,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "husky": "^3.0.5",
+    "jest": "^24.9.0",
     "lint-staged": "^9.3.0",
     "prettier": "^1.18.2"
   },
