@@ -9,11 +9,12 @@ describe('Compilation should replace the language', () => {
     });
 
     for (const { key, lang } of LANG_CONFIG) {
-        test(`It should replace ${lang} to ${key} inside ${lang}.json`, () => {
+        const scope = key === 'zh-TW' ? 'zh' : key;
+        test(`It should replace ${lang} to ${scope} inside ${lang}.json`, () => {
             const {
                 headers: { language }
             } = require(`./compile/${lang}.json`);
-            expect(language).toBe(key);
+            expect(language).toBe(scope);
         });
     }
 });
