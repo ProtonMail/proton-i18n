@@ -33,7 +33,7 @@
     "minimist": "^1.2.0",
     "moment": "^2.24.0",
     "ora": "^4.0.1",
-    "ttag-cli": "^1.7.22"
+    "ttag-cli": "^1.7.24"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
