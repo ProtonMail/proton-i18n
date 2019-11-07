@@ -25,7 +25,7 @@
   "dependencies": {
     "angular-gettext-cli": "github:huston007/angular-gettext-cli#a59bc3e142a5bee1b21d1876d1bb88008bd115b7",
     "chalk": "^2.4.2",
-    "csv-parse": "^4.6.3",
+    "csv-parse": "^4.6.5",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
     "execa": "^2.0.4",
@@ -36,20 +36,20 @@
     "minimist": "^1.2.0",
     "moment": "^2.24.0",
     "ora": "^4.0.2",
-    "ttag-cli": "^1.7.24"
+    "ttag-cli": "^1.7.25"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "cross-env": "^6.0.3",
     "del-cli": "^3.0.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-plugin-react-hooks": "^2.2.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
