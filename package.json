@@ -1,6 +1,6 @@
 {
   "name": "proton-i18n",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "description": "CLI to manage translations for client apps",
   "main": "index.js",
   "bin": {
