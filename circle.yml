@@ -5,12 +5,6 @@ jobs:
        - image: circleci/node:lts
      steps:
        - checkout
-       - restore_cache:
-           key: npm-deps-{{ checksum "package.json" }}
        - run: npm ci
-       - save_cache:
-           key: npm-deps-{{ checksum "package.json" }}
-           paths:
-             - node_modules
        - run: npm run lint
        - run: npm test
