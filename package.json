@@ -24,18 +24,18 @@
   "license": "ISC",
   "dependencies": {
     "angular-gettext-cli": "github:huston007/angular-gettext-cli#a59bc3e142a5bee1b21d1876d1bb88008bd115b7",
-    "chalk": "^2.4.2",
-    "csv-parse": "^4.6.5",
+    "chalk": "^3.0.0",
+    "csv-parse": "^4.8.2",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
-    "execa": "^2.0.4",
-    "form-data": "^2.5.1",
+    "execa": "^3.4.0",
+    "form-data": "^3.0.0",
     "got": "^9.6.0",
     "jszip": "^3.2.2",
     "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "moment": "^2.24.0",
-    "ora": "^4.0.2",
+    "ora": "^4.0.3",
     "ttag-cli": "^1.7.25"
   },
   "devDependencies": {
@@ -44,16 +44,16 @@
     "del-cli": "^3.0.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-react-app": "^5.0.2",
+    "eslint-config-react-app": "^5.1.0",
     "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.2.0",
-    "husky": "^3.0.9",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "lint-staged": {
     "*.js": [
