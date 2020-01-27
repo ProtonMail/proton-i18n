@@ -12,6 +12,9 @@ const is = (command) => argv._.includes(command);
 async function main() {
     debug(CONFIG.getEnv(), 'ENV');
 
+    if (is('post-install')) {
+        await require('./lib/postInstall')();
+    }
     if (is('crowdin')) {
         await require('./lib/crowdin')();
     }
