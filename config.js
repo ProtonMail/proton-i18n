@@ -46,7 +46,9 @@ const getFiles = () => {
 };
 const getEnv = () => ({
     I18N_DEPENDENCY_REPO: process.env.I18N_DEPENDENCY_REPO,
-    I18N_DEPENDENCY_BRANCH: process.env.I18N_DEPENDENCY_BRANCH,
+    I18N_DEPENDENCY_BRANCH: !isBetaAngularV4()
+        ? process.env.I18N_DEPENDENCY_BRANCH
+        : process.env.I18N_DEPENDENCY_BRANCH_V4,
     I18N_EXTRACT_DIR: process.env.I18N_EXTRACT_DIR,
     I18N_JSON_DIR: process.env.I18N_JSON_DIR,
     CROWDIN_KEY_API: process.env.CROWDIN_KEY_API,
