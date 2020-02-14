@@ -79,6 +79,8 @@ $ proton-i18n validate --lint
 
 You need to have a file `.env` inside the directory `<project>/env/`.
 ```sh
+I18N_DEPENDENCY_REPO=<REPOSITORY WITH TRANSLATIONS>
+I18N_DEPENDENCY_BRANCH=<BRANCH FOR THE TRANSLATIONS>
 CROWDIN_KEY_API=<API-KEY>
 CROWDIN_PROJECT_NAME=<CROWDIN-PROJECT-NAME>
 CROWDIN_FILE_NAME='<FILE NAME AVAILABLE ON CROWDIN>' // ex: ProtonVPN Settings Website.pot
@@ -87,13 +89,10 @@ I18N_TEMPLATE_FILE:<FILE SOURCE TO UPLOAD TO CROWDIN>
 
 You don't need these key if you don't manage crowdin, for extraction and validation we won't need them.
 
+- `I18N_TEMPLATE_FILE`: Default value -> `template.pot`
 
 > We need this key to detect the project as we require some custom code for it.
 
-### About I18N custom variables
-
-You don't need to set the key, only if you want to change them.
-- `I18N_TEMPLATE_FILE`: Default value -> `template.pot`
 
 ## Tests
 
