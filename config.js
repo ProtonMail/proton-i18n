@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const { warn } = require('./lib/helpers/log')('proton-i18n');
 
 // Compat mode WebClient
@@ -12,6 +13,19 @@ const PROTON_DEPENDENCIES = {
     ),
     reactComponents: ['{co*,helpers}'],
     shared: ['lib']
+};
+
+/**
+ * Detect the beta v4 -> we have a custom pot for this one
+ * @return {Boolean}
+ */
+const isWebClientLegacy = () => {
+    try {
+        const { name } = require(path.join(process.cwd(), 'package.json')); // We might use proton-i18n on top of a non node package
+        return name === 'protonmail-web';
+    } catch (e) {
+        return false;
+    }
 };
 
 /**
@@ -73,6 +87,7 @@ const getCrowdin = () => {
 
 module.exports = {
     getEnv,
+    isWebClientLegacy,
     getCrowdin,
     getFiles,
     ENV_FILE,
