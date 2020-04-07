@@ -24,14 +24,14 @@
   "license": "ISC",
   "dependencies": {
     "angular-gettext-cli": "github:huston007/angular-gettext-cli#a59bc3e142a5bee1b21d1876d1bb88008bd115b7",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
     "execa": "^4.0.0",
     "lodash": "^4.17.15",
     "minimist": "^1.2.5",
     "tar": "^6.0.1",
-    "ttag-cli": "^1.7.28"
+    "ttag-cli": "^1.8.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -39,14 +39,14 @@
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-react-app": "^5.2.0",
-    "eslint-plugin-flowtype": "^4.6.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
+    "lint-staged": "^10.1.2",
     "prettier": "^1.19.1"
   },
   "lint-staged": {
