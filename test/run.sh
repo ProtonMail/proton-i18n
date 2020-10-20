@@ -8,28 +8,26 @@ EXPECTATION_VALID='test/files/valid-expectation';
 RESULT_BROKEN="test/output-broken.log";
 RESULT_VALID="test/output-valid.log";
 
+function run {
+  scripts/lint.sh test/js/broken %2> "$1" || true
+  scripts/lint.sh test/js/valid %2> "$2" || true
+
+  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_empty_context.pot node index validate >> "$1" 2>/dev/null || true
+  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_invalid_variables.pot node index validate >> "$1" 2>/dev/null || true
+
+  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_ok.pot node index validate >> "$2" 2>/dev/null || true
+};
 
 # Generate new output for tests
 if [ "$1" = 'update' ]; then
-  scripts/lint.sh test/js/broken %2> "$EXPECTATION_BROKEN" || true
-  scripts/lint.sh test/js/valid %2> "$EXPECTATION_VALID" || true
-
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_empty_context.pot node index validate >> "$EXPECTATION_BROKEN" 2>/dev/null || true
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_invalid_variables.pot node index validate >> "$EXPECTATION_BROKEN" 2>/dev/null || true
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_ok.pot node index validate >> "$EXPECTATION_VALID" 2>/dev/null || true
+  run $EXPECTATION_BROKEN $EXPECTATION_VALID;
 
   echo "✔ New output for tests available";
 fi;
 
 # Run tests
 if [ "$1" = 'test' ]; then
-
-  scripts/lint.sh test/js/broken %2> $RESULT_BROKEN || true
-  scripts/lint.sh test/js/valid %2> $RESULT_VALID || true
-
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_empty_context.pot node index validate >> "$RESULT_BROKEN" 2>/dev/null || true
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_invalid_variables.pot node index validate >> "$RESULT_BROKEN" 2>/dev/null || true
-  I18N_EXTRACT_DIR=. I18N_TEMPLATE_FILE=test/po/template_ok.pot node index validate >> "$RESULT_VALID" 2>/dev/null || true
+  run $RESULT_BROKEN $RESULT_VALID;
 
   hasError=false;
   expectedValid="$(cat "$EXPECTATION_VALID")";
