@@ -31,7 +31,7 @@
     "gettext-parser": "^4.0.4",
     "lodash": "^4.17.21",
     "minimist": "^1.2.5",
-    "tar": "^6.1.0",
+    "tar": "^6.1.2",
     "ttag-cli": "^1.9.1"
   },
   "devDependencies": {
